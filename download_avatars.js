@@ -1,5 +1,6 @@
 const request = require('request');
 const token = require('./secrets')
+const fs = require('fs')
 
 function getRepoContributors(repoOwner, repoName, cb) {
     var options = {
