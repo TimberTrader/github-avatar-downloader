@@ -16,6 +16,16 @@ function getRepoContributors(repoOwner, repoName, cb) {
      
     }
     
+function downloadImageByURL(url, filePath) {
+  request.get(url)
+    .on('error', function (err) {
+      throw err; 
+    })
+    .on('response', function (response) {
+      console.log(`Response Status Code: ${response.statusCode}\nStatus Message: ${response.statusMessage}\nResponse Headers: ${response.headers['content-type']}`)
+    })
+    .pipe(fs.createWriteStream(filePath))
+  }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
     console.log("Errors:", err);
@@ -23,3 +33,5 @@ getRepoContributors("jquery", "jquery", function(err, result) {
       console.log("Result:", result.avatar_url);
     })
   });
+
+downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
