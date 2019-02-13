@@ -1,6 +1,9 @@
 # Github Authorization Token
 secrets.js
 
+#Avatar imaage folder
+avatars
+
 # Logs
 logs
 *.log
