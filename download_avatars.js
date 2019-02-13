@@ -30,7 +30,7 @@ function downloadImageByURL(url, filePath) {
   }
 
 getRepoContributors(contributor[0], contributor[1], function(err, result) {
-    let conList = JSON.parse(result);
+    let conList = JSON.parse(result);ver
     result.forEach( result => {
           downloadImageByURL(conList[i].avatar_url, './avatars/' + conList[i].login + '.jpg')
     }
