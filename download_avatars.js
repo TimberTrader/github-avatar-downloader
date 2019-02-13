@@ -1,6 +1,7 @@
 const request = require('request');
 const token = require('./secrets')
 const fs = require('fs')
+const cont = process.argv.slice(2)
 
 function getRepoContributors(repoOwner, repoName, cb) {
     var options = {
@@ -28,11 +29,9 @@ function downloadImageByURL(url, filePath) {
     .pipe(fs.createWriteStream(filePath))
   }
 
-getRepoContributors("jquery", "jquery", function(err, result) {
-    console.log("Errors:", err);
+getRepoContributors(contributor[0], contributor[1], function(err, result) {
+    let conList = JSON.parse(result);
     result.forEach( result => {
-      console.log("Result:", result.avatar_url);
-    })
-  });
-
-downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
+          downloadImageByURL(conList[i].avatar_url, './avatars/' + conList[i].login + '.jpg')
+    }
+  })
